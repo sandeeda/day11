@@ -1,0 +1,8 @@
+package com.capgemini.employeeapp.entities;
+
+public class Employee {
+	private int employeeid;
+	private String employeeName;
+	private String employeeDepartment;
+	private double employeeSalary;
+}

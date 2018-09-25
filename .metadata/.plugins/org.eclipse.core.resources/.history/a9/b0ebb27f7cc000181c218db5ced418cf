@@ -1,0 +1,20 @@
+package com.capgemini.employeeapp.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.capgemini.employeeapp.service.EmployeeService;
+
+@Controller
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@RequestMapping(value="/")
+	public public String getHomePage() {
+		
+	}
+	
+}

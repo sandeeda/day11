@@ -1,0 +1,56 @@
+package com.capgemini.bankapp.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
+
+@Component
+@PropertySource("classpath:db.properties")
+public class DbUtil {
+
+
+	@Autowired
+	private Environment env;
+
+
+	private String getDbUrl()
+	{
+		return env.getProperty("DB_URL");
+	}
+	private String getUsername()
+	{
+		return env.getProperty("username");
+	}
+	private String getPassword()
+	{
+		return env.getProperty("password");
+	}
+	
+/*
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/bank";
+	private static final String username="root";
+	private static final String password="root";
+*/
+
+	public Connection getConnection() {
+		Connection connection = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("i am here");
+			System.out.println(getDbUrl());
+			System.out.println(getUsername());
+			System.out.println(getUsername());
+			connection = DriverManager.getConnection((String)getDbUrl(), (String)getUsername(), (String)getPassword());
+			System.out.println("connected");
+		}
+		catch(ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return connection;
+	}
+}

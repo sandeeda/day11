@@ -1,0 +1,6 @@
+package com.capgemini.bankapp.repository;
+
+public class BankAccountRepository {
+	public double getBalance(long accountId);
+	public boolean updateBalance(long accountId, double newBalance);
+}

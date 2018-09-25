@@ -1,0 +1,13 @@
+package com.capgemini.bankapp.controller;
+
+import com.capgemini.bankapp.service.BankAccountService;
+
+public class BankAccountController {
+	
+	private BankAccountService bankAccountService;
+	public void setBankAccountService(BankAccountService bankAccountService) {
+		this.bankAccountService = bankAccountService;
+	}
+	
+	
+}
