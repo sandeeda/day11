@@ -1,5 +1,0 @@
-package com.capgemini.bankapp.repository;
-
-public class BankAccountRepository {
-
-}
