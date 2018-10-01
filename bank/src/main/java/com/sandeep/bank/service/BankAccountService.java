@@ -1,13 +1,13 @@
 package com.sandeep.bank.service;
 
-import com.sandeep.bank.exceptions.PayeeAccountNotFoundException;
+import com.sandeep.bank.exceptions.AccountIdNotFoundException;
 
 public interface BankAccountService {
 
 	
-	public double getBalance(long accountId);
-	public double withdraw(long accountId, double amount);
+	public double getBalance(long accountId) throws AccountIdNotFoundException;
+	public double withdraw(long accountId, double amount) throws AccountIdNotFoundException;
 	public double deposit(long accountId, double amount);
-	public boolean fundTransfer(long fromAcc, long toAcc, double amount) throws PayeeAccountNotFoundException;
+	public boolean fundTransfer(long fromAcc, long toAcc, double amount) ;
 
 }

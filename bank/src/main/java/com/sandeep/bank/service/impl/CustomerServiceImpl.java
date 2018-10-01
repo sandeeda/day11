@@ -1,9 +1,11 @@
 package com.sandeep.bank.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.sandeep.bank.dao.CustomerDao;
+import com.sandeep.bank.exceptions.UserNotFoundException;
 import com.sandeep.bank.model.Customer;
 import com.sandeep.bank.service.CustomerService;
 
@@ -13,9 +15,17 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDao customerDao;
 
 	@Override
-	public Customer authenticate(Customer customer) {
+	public Customer authenticate(Customer customer) throws UserNotFoundException{
 		// TODO Auto-generated method stub
-		return customerDao.authenticate(customer);
+		try {
+			return customerDao.authenticate(customer);
+		}
+		catch (DataAccessException ex) {
+			UserNotFoundException uex = new UserNotFoundException("no user found");
+			uex.initCause(ex);
+			throw uex;
+		}
+
 	}
 
 	@Override

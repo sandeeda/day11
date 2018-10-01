@@ -22,4 +22,8 @@
 <!-- <context:annotation-config></context:annotation-config>
 <context:component-scan base-package="com.capgemini.bankapp"></context:component-scan> -->
 
+<!-- <bean id="bankAccountRepository" class="com.capgemini.bankapp.repository.impl.BankAccountRepositoryImpl" scope="singleton" autowire=""></bean> -->
+
+
+
 </beans>

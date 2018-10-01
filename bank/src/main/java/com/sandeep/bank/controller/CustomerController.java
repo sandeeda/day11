@@ -6,9 +6,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sandeep.bank.exceptions.UserNotFoundException;
 import com.sandeep.bank.model.Customer;
 import com.sandeep.bank.service.CustomerService;
 @Controller
@@ -29,7 +31,7 @@ public class CustomerController {
 
 
 	@RequestMapping("login.do")
-	public String displayDetails(HttpSession session,HttpServletRequest request, @RequestParam int customerId,@RequestParam String password) {
+	public String displayDetails(HttpSession session,HttpServletRequest request, @RequestParam int customerId,@RequestParam String password)throws UserNotFoundException {
 		session=request.getSession();
 		Customer customer = new Customer(null, customerId, password, null, null, null, null);
 		Customer authenticatedCustomer=null;
@@ -56,19 +58,17 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("editProfile")
-	public String getEditProfilePage() {
+	public String getEditProfilePage(HttpServletRequest request,HttpSession session,Model model) {
+		model.addAttribute("customer",session.getAttribute("customer"));
 		return "editProfile";
 	}
 
 	@RequestMapping("editProfile.do")
-	public String editProfile(HttpSession session,HttpServletRequest request, @RequestParam String emailId, @RequestParam String address) {
+	public String editProfile(HttpSession session,HttpServletRequest request, @ModelAttribute Customer customer) {
 		session=request.getSession();
-		Customer customer=new Customer();
-		Customer customer2=(Customer) session.getAttribute("customer");
-		customer=customer2;
-		customer.setAddress(address);
-		customer.setEmail(emailId);
+		Customer customerInSession = (Customer) session.getAttribute("customer");
 		customer = customerService.updateProfile(customer);
+		customer.setBankAccount(customerInSession.getBankAccount());
 		session.setAttribute("customer", customer);
 		return "profileUpdatedSuccessfully";
 	}

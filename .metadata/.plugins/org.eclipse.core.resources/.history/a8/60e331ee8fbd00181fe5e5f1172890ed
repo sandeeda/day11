@@ -1,4 +1,0 @@
-DB_URL=jdbc:mysql://localhost:3306/bank
-uname=root
-password=root
-driverClassName=com.mysql.cj.jdbc.Driver

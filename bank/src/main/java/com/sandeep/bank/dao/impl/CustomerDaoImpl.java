@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -17,10 +19,19 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate; 
+	@SuppressWarnings("serial")
 	@Override
-	public Customer authenticate(Customer customer) {
+	public Customer authenticate(Customer customer) throws DataAccessException{
 		// TODO Auto-generated method stub
-		return jdbcTemplate.queryForObject("select * from customerdata where customerId=? and password=?",new Object[] {customer.getCustomerId(),customer.getPassword()}, new CustomerRowMapper());
+		try {
+			return jdbcTemplate.queryForObject("select * from customerdata where customerId=? and password=?",new Object[] {customer.getCustomerId(),customer.getPassword()}, new CustomerRowMapper());
+		}
+		catch(DataAccessException ex)
+		{
+			ex.initCause(new EmptyResultDataAccessException("no user found,expected 1 actual 0",1));
+			ex.getCause();
+			throw ex;
+		}
 	}
 
 	@Override
@@ -45,8 +56,8 @@ public class CustomerDaoImpl implements CustomerDao {
 		}
 		return false;
 	}
-	
-	
+
+
 	private class CustomerRowMapper implements RowMapper<Customer>{
 		@Override
 		public Customer mapRow (ResultSet rs , int rowNum) throws SQLException {
@@ -62,8 +73,8 @@ public class CustomerDaoImpl implements CustomerDao {
 			return customer;
 		}
 	}
-	
-	
+
+
 	private class BankAccountRowMapper implements RowMapper<BankAccount>
 	{
 		@Override
@@ -73,9 +84,9 @@ public class CustomerDaoImpl implements CustomerDao {
 			bankAccount.setAccountType(rs.getString(3));
 			bankAccount.setBalance(rs.getInt(2));
 			return bankAccount;
-			
+
 		}
-		
+
 	}
 
 }

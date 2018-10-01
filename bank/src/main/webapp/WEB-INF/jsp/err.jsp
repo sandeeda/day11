@@ -8,5 +8,7 @@
 </head>
 <body>
 WRONG CREDENTIALS!DONT TRY AGAIN
+<p>${requestScope.errorname}</p>
+<p>${requestScope.cause}</p>
 </body>
 </html>

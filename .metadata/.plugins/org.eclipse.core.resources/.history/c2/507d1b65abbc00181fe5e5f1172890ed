@@ -1,9 +1,0 @@
-package com.capgemini.bankapp.config;
-
-public class MyDbConfig {
-
-	private String dbUrl;
-	private String dbUsername;
-	private String dbpassword;
-	
-}

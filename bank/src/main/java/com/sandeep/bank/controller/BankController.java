@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sandeep.bank.exceptions.PayeeAccountNotFoundException;
+import com.sandeep.bank.exceptions.AccountIdNotFoundException;
 import com.sandeep.bank.model.Customer;
 import com.sandeep.bank.service.BankAccountService;
 import com.sandeep.bank.service.CustomerService;
@@ -33,7 +33,7 @@ public class BankController {
 	}
 	
 	@RequestMapping("fundTransfer.do")
-	public String fundTransfer (HttpSession session,HttpServletRequest request, @RequestParam long payeeAccountNumber,@RequestParam double amount) throws PayeeAccountNotFoundException
+	public String fundTransfer (HttpSession session,HttpServletRequest request, @RequestParam long payeeAccountNumber,@RequestParam double amount) throws AccountIdNotFoundException
 	{
 		session = request.getSession();
 		Customer customer= (Customer) session.getAttribute("customer");

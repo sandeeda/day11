@@ -1,5 +1,0 @@
-#THIS FILE CONTAINS CONFIGURATION DETAILS OF MYSQL DATABASE
-db.url=jdbc:mysql://localhost:3306/bank
-db.username=root
-db.password=root
-db.driverClassName=com.mysql.cj.jdbc.Driver

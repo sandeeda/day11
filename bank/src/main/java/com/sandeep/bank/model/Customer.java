@@ -4,6 +4,12 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Customer {
 
 
@@ -114,11 +120,16 @@ public class Customer {
 	}
 
 	private String customerName;
+	@NotNull @Min(1000) @Max(9999)
 	private int customerId;
+	@NotNull
+	@Size(min=3,max=20,message = "Please enter between {min} and {max} characters.")
 	private String password;
+	@Email
 	private String email;
 	private String Address;
 	private LocalDate dateOfBirth;
+	@NotNull @Min(1000) @Max(9999)
 	private BankAccount bankAccount;
 	@Override
 	public String toString() {

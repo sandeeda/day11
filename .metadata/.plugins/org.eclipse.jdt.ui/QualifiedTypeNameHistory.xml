@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.capgemini.bankapp.controller.BankAccountController"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.EnableAspectJAutoProxy"/>
-<fullyQualifiedTypeName name="com.capgemini.bankapp.config.AppConfig"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="com.capgemini.bankapp.config.MyDbConfig"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-<fullyQualifiedTypeName name="com.capgemini.bankapp.util.DbUtil"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
-<fullyQualifiedTypeName name="java.nio.file.attribute.UserPrincipalNotFoundException"/>
 <fullyQualifiedTypeName name="javax.activation.DataSource"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.datasource.DriverManagerDataSource"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
@@ -22,13 +13,9 @@
 <fullyQualifiedTypeName name="com.capgemini.employeeapp.repository.impl.EmployeeRepositoryImpl.EmployeesRowMapper"/>
 <fullyQualifiedTypeName name="com.capgemini.employeeapp.repository.EmployeeRepository"/>
 <fullyQualifiedTypeName name="com.capgemini.employeeapp.service.EmployeeService"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
-<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 <fullyQualifiedTypeName name="com.capgemini.employeeapp.entities.Employee"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.EnableWebMvc"/>
@@ -51,13 +38,26 @@
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.JdbcTemplate"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="com.sandeep.bank.model.BankAccount"/>
-<fullyQualifiedTypeName name="com.sandeep.bank.model.Customer"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="com.sandeep.bank.service.BankAccountService"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.sandeep.bank.service.CustomerService"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+<fullyQualifiedTypeName name="com.sandeep.bank.model.Customer"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Min"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Max"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
 </qualifiedTypeNameHistroy>
