@@ -1,6 +1,6 @@
 package com.sandeep.bank.exceptions;
 
-public class AccountIdNotFoundException extends Exception {
+public class AccountIdNotFoundException extends RuntimeException {
 
 
 

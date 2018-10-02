@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-WRONG CREDENTIALS!DONT TRY AGAIN
+<%@ include file="header.jsp" %>
 <p>${requestScope.errorname}</p>
 <p>${requestScope.cause}</p>
 </body>

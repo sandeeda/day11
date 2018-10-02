@@ -1,6 +1,6 @@
 package com.sandeep.bank.exceptions;
 
-public class AccountBalanceException extends Exception {
+public class AccountBalanceException extends RuntimeException {
 
 
 

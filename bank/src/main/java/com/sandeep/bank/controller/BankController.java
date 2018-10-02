@@ -38,14 +38,9 @@ public class BankController {
 		session = request.getSession();
 		Customer customer= (Customer) session.getAttribute("customer");
 		
-		if(bankAccountService.fundTransfer(customer.getBankAccount().getAccountId(), payeeAccountNumber, amount))
-		{
-			customer.getBankAccount().setBalance(bankAccountService.getBalance(customer.getBankAccount().getAccountId())); 
-			session.setAttribute("customer", customer);
-			return "transferSuccess";
-		}
+		bankAccountService.fundTransfer(customer.getBankAccount().getAccountId(), payeeAccountNumber, amount);
 		
-		return "transferFail";
+		return "transferSuccess";
 	}
 	
 }

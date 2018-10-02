@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.sandeep.bank.dao.CustomerDao;
+import com.sandeep.bank.exceptions.PasswordDetailsWrongException;
 import com.sandeep.bank.model.BankAccount;
 import com.sandeep.bank.model.Customer;
 
@@ -26,35 +27,35 @@ public class CustomerDaoImpl implements CustomerDao {
 		try {
 			return jdbcTemplate.queryForObject("select * from customerdata where customerId=? and password=?",new Object[] {customer.getCustomerId(),customer.getPassword()}, new CustomerRowMapper());
 		}
-		catch(DataAccessException ex)
+		catch(DataAccessException dx)
 		{
-			ex.initCause(new EmptyResultDataAccessException("no user found,expected 1 actual 0",1));
-			ex.getCause();
-			throw ex;
+			throw dx;
 		}
 	}
 
 	@Override
-	public Customer updateProfile(Customer customer) {
+	public Customer updateProfile(Customer customer)throws DataAccessException {
 		// TODO Auto-generated method stub
-		jdbcTemplate.update("UPDATE customerdata SET address=?,email=?  WHERE customerId=?",new Object[] {customer.getAddress(),customer.getEmail(),customer.getCustomerId()});
-		return customer;
+		try {
+			jdbcTemplate.update("UPDATE customerdata SET address=?,email=?  WHERE customerId=?",new Object[] {customer.getAddress(),customer.getEmail(),customer.getCustomerId()});
+			return customer;
+		} catch (DataAccessException dx) {
+			// TODO: handle exception
+			throw dx;
+		}
+
 	}
 
 	@Override
-	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
+	public boolean updatePassword(Customer customer, String oldPassword, String newPassword)throws DataAccessException{
 		// TODO Auto-generated method stub
-		int count=0;
-		String originalPassword=jdbcTemplate.queryForObject("select password from customerdata where customerid=?",new Object[] {customer.getCustomerId()},String.class);
-		if(oldPassword.equals(originalPassword))
-		{
-			count=jdbcTemplate.update("UPDATE customerdata SET password=?  WHERE customerId=?",new Object[] {newPassword,customer.getCustomerId()});
-		}
-		if(count==1)
-		{
+		try {
+			jdbcTemplate.update("update customerdata set password = ? where customerid=? and password=?",new Object[] {newPassword,customer.getCustomerId(),oldPassword});
 			return true;
+		} catch (DataAccessException dx) {
+			// TODO: handle exception
+			throw dx;
 		}
-		return false;
 	}
 
 
@@ -64,6 +65,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			Customer customer = new Customer();
 			BankAccount bankAccount= new BankAccount();
 			customer.setAddress(rs.getString(5));
+			customer.setPassword(rs.getString(3));
 			customer.setCustomerId(rs.getInt(2));
 			customer.setCustomerName(rs.getString(1));
 			customer.setDateOfBirth(rs.getDate(6).toLocalDate());
