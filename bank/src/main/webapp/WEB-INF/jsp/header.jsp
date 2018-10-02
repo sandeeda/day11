@@ -33,7 +33,7 @@
 	      	<li><a href="loginCustomer">Login</a></li>
 	      </c:if>
 	      <c:if test="${sessionScope.customer.customerId!=null}">
-	      	<li><a href="balanceEnquiry">Balance inquiry</a></li>
+	      	<li><a href="balanceEnquiry.do">Balance inquiry</a></li>
 	      </c:if>
 	      <c:if test="${sessionScope.customer.customerId!=null}">
 	      	<li><a href="fundTransfer">Fund Transfer</a></li>

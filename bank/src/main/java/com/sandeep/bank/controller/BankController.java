@@ -20,7 +20,7 @@ public class BankController {
 	
 	@Autowired
 	BankAccountService bankAccountService;
-	@RequestMapping("balanceEnquiry")
+	@RequestMapping("balanceEnquiry.do")
 	public String getBalanceEnquiryPage()
 	{
 		return "balanceEnquiry";

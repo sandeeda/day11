@@ -16,29 +16,16 @@ public class BankAccountServiceImpl implements BankAccountService {
 	private BankAccountDao bankAccountDao;
 
 	@Override
-	public double getBalance(long accountId) throws AccountIdNotFoundException {
-		try {
-			return bankAccountDao.getBalance(accountId);
-
-			
-		} catch (DataAccessException e) {
-			// TODO: handle exception
-			AccountIdNotFoundException accountIdNotFoundException = new AccountIdNotFoundException("account id not found for bank account");
-			accountIdNotFoundException.initCause(e);
-			throw accountIdNotFoundException;
-		}
+	public double getBalance(long accountId)  {
+		return bankAccountDao.getBalance(accountId);
 
 	}
 
 	@Override
-	public double withdraw(long accountId, double amount) throws AccountIdNotFoundException{
+	public double withdraw(long accountId, double amount) {
 	
-		double balance=bankAccountDao.getBalance(accountId);
-		if(balance+amount>=0)
-		{
 		if(bankAccountDao.updateBalance(accountId, -1*amount))
 			return bankAccountDao.getBalance(accountId);
-		}
 		return bankAccountDao.getBalance(accountId);
 		
 	}

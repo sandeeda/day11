@@ -25,6 +25,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\sandeeda\Documents\Spring-Workspace\bank"/>
 			<item value="C:\Users\sandeeda\Downloads\bank"/>
 			<item value="C:\Users\sandeeda\Downloads\simpleapp"/>
 		</list>
