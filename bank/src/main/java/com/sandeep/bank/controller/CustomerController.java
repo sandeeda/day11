@@ -52,9 +52,10 @@ public class CustomerController {
 		Customer customer = (Customer) session.getAttribute("customer");
 		if(newPassword.equals(confirmNewPassword))
 		{
-			customerService.updatePassword(customer, oldPassword, confirmNewPassword);
+			if(customerService.updatePassword(customer, oldPassword, confirmNewPassword))
+					return "passworSuccessfullyChanged";
 		}
-		return "passworSuccessfullyChanged";
+		return "passwordFail";
 	}
 	
 	@RequestMapping("editProfile")
