@@ -6,12 +6,14 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="model" key="selection"/>
+		<item value="customer" key="selection"/>
 		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="product"/>
+			<item value="Product"/>
 			<item value="sessionScope"/>
 			<item value="com.sandeep.bank.model.BankAccount"/>
 			<item value="Emp"/>
@@ -22,6 +24,8 @@
 			<item value=""/>
 		</list>
 		<list key="replacehistory">
+			<item value="customer"/>
+			<item value="Customer"/>
 			<item value="model"/>
 			<item value="BankAccount"/>
 			<item value="Student"/>

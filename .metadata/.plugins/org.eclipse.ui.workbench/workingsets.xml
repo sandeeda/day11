@@ -12,5 +12,9 @@
 <item elementID="=bankapp2/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=bankapp2/src\/test\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1538715214181_3" label="practice" name="practice">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/CustomerApp" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1538970847691_4" label="customerapp" name="customerapp"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1537352860286_2" label="Window Working Set" name="Aggregate for window 1537352860285"/>
 </workingSetManager>

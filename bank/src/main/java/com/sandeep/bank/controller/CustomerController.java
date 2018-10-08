@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 
 import com.sandeep.bank.exceptions.InvalidDetailsException;
 import com.sandeep.bank.exceptions.PasswordDetailsWrongException;
@@ -16,6 +19,7 @@ import com.sandeep.bank.exceptions.UserNotFoundException;
 import com.sandeep.bank.model.Customer;
 import com.sandeep.bank.service.CustomerService;
 @Controller
+@SessionAttributes("customer")
 public class CustomerController {
 
 	@Autowired
@@ -33,13 +37,19 @@ public class CustomerController {
 
 
 	@RequestMapping("login.do")
-	public String displayDetails(HttpSession session,HttpServletRequest request, @RequestParam int customerId,@RequestParam String password)throws UserNotFoundException {
-		session=request.getSession();
-		Customer customer = new Customer(null, customerId, password, null, null, null, null);
+	public String displayDetails(@ModelAttribute Customer customer)throws UserNotFoundException {
+		/*session=request.getSession();*/
+		
 		Customer authenticatedCustomer=null;
 		authenticatedCustomer=customerService.authenticate(customer);
-		session.setAttribute("customer", authenticatedCustomer);
+		customer.setAddress(authenticatedCustomer.getAddress());
+		customer.setBankAccount(authenticatedCustomer.getBankAccount());
+		customer.setDateOfBirth(authenticatedCustomer.getDateOfBirth());
+		customer.setCustomerName(authenticatedCustomer.getCustomerName());
+		customer.setEmail(authenticatedCustomer.getEmail());
+//		session.setAttribute("customer", authenticatedCustomer);
 		return "displayDetails";
+		
 	}
 
 	@RequestMapping("changePassword")
@@ -47,42 +57,41 @@ public class CustomerController {
 		return "changePassword";
 	}
 	@RequestMapping("changePassword.do")
-	public String changePassword(HttpSession session,HttpServletRequest request, @RequestParam String oldPassword, @RequestParam String newPassword, @RequestParam String confirmNewPassword) throws PasswordDetailsWrongException {
-		session=request.getSession();
-		Customer customer = (Customer) session.getAttribute("customer");
+	public String changePassword(@RequestParam String oldPassword, @RequestParam String newPassword, @RequestParam String confirmNewPassword,@ModelAttribute Customer customer) throws PasswordDetailsWrongException {
+		/*session=request.getSession();
+		Customer customer = (Customer) session.getAttribute("customer");*/
 		if(newPassword.equals(confirmNewPassword))
 		{
 			if(customerService.updatePassword(customer, oldPassword, confirmNewPassword))
-					return "passworSuccessfullyChanged";
+				return "passworSuccessfullyChanged";
 		}
 		return "passwordFail";
 	}
-	
+
 	@RequestMapping("editProfile")
-	public String getEditProfilePage(HttpServletRequest request,HttpSession session,Model model) {
-		model.addAttribute("customer",session.getAttribute("customer"));
+	public String getEditProfilePage(@ModelAttribute Customer customer,Model model) {
+		model.addAttribute("customer",customer);
 		return "editProfile";
 	}
 
 	@RequestMapping("editProfile.do")
-	public String editProfile(HttpSession session,HttpServletRequest request, @ModelAttribute Customer customer) throws InvalidDetailsException {
-		session=request.getSession();
-		Customer customerInSession = (Customer) session.getAttribute("customer");
+	public String editProfile(/*HttpSession session,HttpServletRequest request, */@ModelAttribute Customer customer) throws InvalidDetailsException {
+//		Customer customerInSession = (Customer) session.getAttribute("customer");
+		Customer customerInSession = customer;
 		customer = customerService.updateProfile(customer);
 		customer.setBankAccount(customerInSession.getBankAccount());
-		session.setAttribute("customer", customer);
 		return "profileUpdatedSuccessfully";
 	}
-	
+
 	@RequestMapping("logout.do")
-	public String logout(HttpSession session,HttpServletRequest request) {
-		session=request.getSession();
-		session.invalidate();
-		return "index";
+	public String logout(@ModelAttribute Customer customer, HttpSession session, SessionStatus status) {
+		status.setComplete();
+        session.removeAttribute("customer");
+        return "redirect:/";
 	}
 	@RequestMapping("displayDetails")
 	public String displayUser() {
 		return "displayDetails";
 	}
-	
+
 }

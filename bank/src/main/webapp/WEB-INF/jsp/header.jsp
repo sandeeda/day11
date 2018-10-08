@@ -29,21 +29,21 @@
 	          <li><a href="#">Page 1-3</a></li>
 	        </ul>
 	      </li> -->
-	      <c:if test="${sessionScope.customer.customerId==null}">
+	      <c:if test="${sessionScope.customer.customerName==null}">
 	      	<li><a href="loginCustomer">Login</a></li>
 	      </c:if>
-	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      <c:if test="${sessionScope.customer.customerName!=null}">
 	      	<li><a href="balanceEnquiry.do">Balance inquiry</a></li>
 	      </c:if>
-	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      <c:if test="${sessionScope.customer.customerName!=null}">
 	      	<li><a href="fundTransfer">Fund Transfer</a></li>
 	      </c:if>
 	      	
-	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      <c:if test="${sessionScope.customer.customerName!=null}">
 	      	<li><a href="changePassword">Change Password</a></li>
 	      </c:if>
 	      
-	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      <c:if test="${sessionScope.customer.customerName!=null}">
 	      	<li><a href="editProfile">Edit Profile</a></li>
 	      </c:if>
 	      

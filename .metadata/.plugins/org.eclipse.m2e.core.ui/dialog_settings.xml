@@ -22,9 +22,28 @@
 	<section name="org.eclipse.m2e.core.pom.dependencies">
 	</section>
 	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\sandeeda\Downloads\mongoDbApp"/>
+			<item value="C:\Users\sandeeda\Downloads\myorders (1)"/>
+			<item value="C:\Users\sandeeda\Downloads\Orders-master"/>
+			<item value="C:\Users\sandeeda\Downloads\OrdersApp"/>
+			<item value="C:\Users\sandeeda\Downloads\OrderApp"/>
+			<item value="C:\Users\sandeeda\Downloads\practice"/>
+			<item value="C:\Users\sandeeda\Downloads\productapp"/>
+			<item value="C:\Users\sandeeda\Downloads\simplerestapp-master"/>
+			<item value="C:\Users\sandeeda\Downloads\demo"/>
+			<item value="C:\Users\sandeeda\Downloads\simplerestapp"/>
+			<item value="C:\Users\sandeeda\Desktop\demo"/>
 			<item value="C:\Users\sandeeda\Documents\Spring-Workspace\bank"/>
 			<item value="C:\Users\sandeeda\Downloads\bank"/>
 			<item value="C:\Users\sandeeda\Downloads\simpleapp"/>

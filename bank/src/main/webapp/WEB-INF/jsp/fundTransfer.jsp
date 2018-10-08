@@ -9,7 +9,7 @@
 <body>
 <%@ include file="header.jsp" %>
 
-	<form action="fundTransfer.do" method="post">
+	<form action="fundTransfer.do" method="post" >
 		
 		<label>Payee Account number:</label>
 		<input type="number" name="payeeAccountNumber" size=15 required>
